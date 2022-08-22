@@ -28,6 +28,10 @@ class ViewController: UIViewController, LEDBoardSettingDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let settingViewController = segue.destination as? SettingViewController { //다운캐스팅
             settingViewController.delegate = self
+            //세팅뷰 컨트롤러로 설정값 전달
+            settingViewController.ledText = self.contentsLabel.text
+            settingViewController.textColor = self.contentsLabel.textColor
+            settingViewController.backgroundColor = self.view.backgroundColor ?? .black
         }
     }
 

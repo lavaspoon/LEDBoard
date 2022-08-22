@@ -24,11 +24,21 @@ class SettingViewController : UIViewController {
     
 // 2. 델리게이트 프로퍼티 추가
     weak var delegate: LEDBoardSettingDelegate?
+    var ledText: String?
     var textColor: UIColor = .yellow
     var backgroundColor: UIColor = .black
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureView()
+    }
+    
+    private func configureView() {
+        if let ledText = self.ledText {
+            self.textField.text = ledText
+        }
+        self.changeTextColor(color: self.textColor)
+        self.changeBackgroundColorButton(color: self.backgroundColor)
     }
     @IBAction func tapTextColorBtn(_ sender: UIButton) {
         if sender == self.yellowBtn {
